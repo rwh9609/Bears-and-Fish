@@ -48,7 +48,7 @@ class Ecosystem(object):
             self.grid[x][y] = '>'
         elif isinstance(creature, BabyBear):
             self.grid[x][y] = '9'
-        else:
+        elif isinstance(creature, Fish):
             self.grid[x][y] = 'F'
 
     def get_y(self):
@@ -60,16 +60,11 @@ class Ecosystem(object):
     def set_y(self, y):
         self.y = y
 
-    def set_y(self, x):
+    def set_x(self, x):
         self.x = x
 
     def flood(self):
-        time.sleep(1)
+        time.sleep(2)
         for y in range(self.y*2):
             sys.stdout.write("\033[F")
             sys.stdout.write("\033[K")
-
-    # def report_current_board(self):
-    #     for row in range(self.x):
-    #         for column in range(self.y):
-    #
