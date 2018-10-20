@@ -11,7 +11,7 @@ import sys
 class Ecosystem(object):
 
     def __init__(self, x, y):
-        # --- Create  grid of numbers
+        # Creates  grid of numbers
         # Create an empty list
         self.grid = [[]]
         self.x = x
@@ -20,12 +20,16 @@ class Ecosystem(object):
 
     # function to create the backbone of the matrix
     def make_board(self):
+
         # Loop for each row
         for row in range(self.x):
+
             # For each row, create a list that will represent an entire row
             self.grid.append([])
+
             # Loop for each column
             for column in range(self.y):
+
                 # Add in the number zero to the current row
                 self.grid[row].append('-')
 
@@ -34,8 +38,8 @@ class Ecosystem(object):
         for y in range(self.y):
             for x in range(self.x):
 
-                # if there's an animal there, print it
-                print('{:}'.format(self.grid[x][y]), end='  ')
+                # print the value currently at grid[x][y], initially it's just '-', i.e. empty.
+                print('{}'.format(self.grid[x][y]), end='  ')
             print()
             print()
 
@@ -69,7 +73,7 @@ class Ecosystem(object):
         self.x = x
 
     def flood(self):
-        time.sleep(.5)
+        time.sleep(.1)
         for y in range(self.y*2):
             sys.stdout.write("\033[F")
             sys.stdout.write("\033[K")
