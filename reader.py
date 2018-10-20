@@ -10,6 +10,7 @@ from itertools import cycle
 
 class Reader(object):
 
+    # data values are fed into constructor
     def __init__(self, data):
         self.fp = open(data)
         self.grid = [[]]
@@ -24,12 +25,18 @@ class Reader(object):
         line2 = self.fp.readline()
         info2 = line2.split()
         self.moves = int(info2[0])
+
+        # creates the matrix where the Fish and Bears live
         self.grid = Ecosystem(n, m)
         self.grid.make_board()
         self.grid.print()
 
     def placements(self):
         line = self.fp.readline()
+
+        # reads all of the data from input
+        # adds all of the creatures to a list
+        # creatures have attributes including position, sex, and strength
         self.creatures = []
         line.split()
         while line != "":
@@ -67,69 +74,84 @@ class Reader(object):
             x = creature.get_x()
             y = creature.get_y()
             strength = creature.get_strength()
-            decision_maker = randint(1, 6)
+            decision_maker = randint(2, 5)
+
             # right
             if decision_maker is 2:
                 if x+1 >= gridx and y+1 >= gridy:
+                    pass
                     creature.set_y(0)
                     creature.set_x(0)
                 elif x+1 >= gridx:
+                    pass
                     creature.set_y(y+1)
                     creature.set_x(0)
                 else:
                     creature.set_x(x+1)
                 replacement = KilledSpot(x, y, 0, 0)
                 self.grid.set_pos(replacement)
+
             # left
             elif decision_maker is 3:
                 if x-1 < 0 and y-1 < 0:
-                    creature.set_x(gridx-1)
-                    creature.set_y(gridy-1)
+                    pass
+                    #creature.set_x(gridx-1)
+                    #creature.set_y(gridy-1)
                 elif x-1 < 0:
-                    creature.set_y(y-1)
-                    creature.set_x(gridx-1)
+                    pass
+                    #creature.set_y(y-1)
+                    #creature.set_x(gridx-1)
                 else:
                     creature.set_x(x-1)
                 replacement = KilledSpot(x, y, 0, 0)
                 self.grid.set_pos(replacement)
+
             # down
             elif decision_maker is 4:
                 if y+1 >= gridy and x+1 >= gridx:
-                    creature.set_y(0)
-                    creature.set_x(0)
+                    pass
+                    #creature.set_y(0)
+                    #creature.set_x(0)
                 elif y+1 >= gridy:
-                    creature.set_y(0)
-                    creature.set_x(x+1)
+                    pass
+                    #creature.set_y(0)
+                    #creature.set_x(x+1)
                 else:
                     creature.set_y(y+1)
                 replacement = KilledSpot(x, y, 0, 0)
                 self.grid.set_pos(replacement)
+
             # up
             elif decision_maker is 5:
                 if y-1 < 0 and x-1 < 0:
-                    creature.set_y(gridy-1)
-                    creature.set_x(gridx-1)
+                    pass
+                    #creature.set_y(gridy-1)
+                    #creature.set_x(gridx-1)
                 elif y-1 < 0:
-                    creature.set_y(gridy-1)
-                    creature.set_x(x-1)
+                    pass
+                    #creature.set_y(gridy-1)
+                    #creature.set_x(x-1)
                 else:
                     creature.set_y(y-1)
                 replacement = KilledSpot(x, y, 0, 0)
                 self.grid.set_pos(replacement)
             elif decision_maker is 1:
                 continue
+
             new_x = creature.get_x()
             new_y = creature.get_y()
             current_gender = creature.get_gender()
+
             for each in self.creatures:
                 if each is creature:
                     continue
-                elif new_x == each.get_x() and new_y == each.get_y():
 
+                elif new_x == each.get_x() and new_y == each.get_y():
                     opp_strength = int(each.get_strength())
                     opp_gender = each.get_gender()
                     n = creature.get_n()
                     m = each.get_n()
+
                     if opp_gender != current_gender and n == m:
                         if creature.n is 'B':
                             baby = BabyBear(new_x, new_y, 1, 'M')

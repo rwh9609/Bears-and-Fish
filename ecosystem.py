@@ -17,6 +17,8 @@ class Ecosystem(object):
         self.x = x
         self.y = y
 
+
+    # function to create the backbone of the matrix
     def make_board(self):
         # Loop for each row
         for row in range(self.x):
@@ -27,17 +29,20 @@ class Ecosystem(object):
                 # Add in the number zero to the current row
                 self.grid[row].append('-')
 
+    # function to display the matrix
     def print(self):
         for y in range(self.y):
-            # print(' -'*(self.x*2+1))
-            # print(' - ', end='')
             for x in range(self.x):
+
+                # if there's an animal there, print it
                 print('{:}'.format(self.grid[x][y]), end='  ')
             print()
             print()
-        # print(' -'*(self.x*2+1))
 
     def set_pos(self, creature):
+
+        # gets all of the positions of the animals
+        # sets the grid location for them
         x = creature.get_x()
         y = creature.get_y()
         if isinstance(creature, Bear):
@@ -45,9 +50,9 @@ class Ecosystem(object):
         elif isinstance(creature, KilledSpot):
             self.grid[x][y] = '-'
         elif isinstance(creature, BabyFish):
-            self.grid[x][y] = '>'
+            self.grid[x][y] = 'f'
         elif isinstance(creature, BabyBear):
-            self.grid[x][y] = '9'
+            self.grid[x][y] = 'b'
         elif isinstance(creature, Fish):
             self.grid[x][y] = 'F'
 
@@ -64,7 +69,7 @@ class Ecosystem(object):
         self.x = x
 
     def flood(self):
-        time.sleep(2)
+        time.sleep(.5)
         for y in range(self.y*2):
             sys.stdout.write("\033[F")
             sys.stdout.write("\033[K")
