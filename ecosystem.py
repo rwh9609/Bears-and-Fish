@@ -73,7 +73,7 @@ class Ecosystem(object):
         self.x = x
 
     def flood(self):
-        time.sleep(.1)
+        time.sleep(.05)
         for y in range(self.y*2):
             sys.stdout.write("\033[F")
             sys.stdout.write("\033[K")
