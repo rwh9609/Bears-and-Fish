@@ -10,7 +10,7 @@ import random
 
 class Reader(object):
 
-    # data values are fed into constructor
+    # data values are fed into constructor, aka input.txt
     def __init__(self, data):
 
         # creates a file object which contains the data file with the animal values and matrix size
