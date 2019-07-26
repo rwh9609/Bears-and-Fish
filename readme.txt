@@ -28,6 +28,6 @@ B - - - - - - - - f (0,9)
 
 
 
-the grid resets, in place, in the intermin windows.. around every .5 seconds, but this again is configurable. It gives the appearance of the Fs and Bs actually moving around.
+the grid resets, in place, in the terminal windows for macos/linux.. around every .5 seconds, but this again is configurable. It gives the appearance of the Fs and Bs actually moving around.
 
 The Fs and Bs can go up, left, right, down, or stay still. if they land on another animal, they may fight. the higher strength wins. TODO:introduce probability
